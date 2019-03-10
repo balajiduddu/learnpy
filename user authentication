@@ -1,0 +1,79 @@
+#user authentication and password creation
+usenames=('ravi','ramu','raju')
+passwords=('abcd@','abdc@','xyz@@')
+userlist=list(usenames)
+passwordlist=list(passwords)
+password=""
+uaername=""
+alphabet=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','@','&','*']
+def checkalpahbet( str ):
+  count=0
+  value="true"
+  for i in range(len(str)):
+    try:
+      if(alphabet.index(str[i])>=0):
+        print("")
+    except ValueError:
+      #print("in valid voter")
+      count=count+1
+  if(count>0):
+    value="false"
+  print(value)
+  return value
+print("are you an user enter yes/no:")
+value=input()
+if(value=="yes"):
+  count=0
+  print("enter your user name to login:")
+  username=input()
+  for i in range (3):
+    print("enter your password:")
+    password=input()
+    try:
+      if(userlist.index(username)>=0 and passwordlist.index(password)>=0):
+        if(userlist.index(username)==passwordlist.index(password)):
+          print("welcome!!!")
+          break
+    except ValueError:
+      print("tryagain")
+      count+=1
+  if(count==3):
+    print("you have exausted the number of attempts")
+if(value=="no"):
+  print("you want to create an account enter yes/no")
+  input2=input()
+  if(input2 == "yes" or input2 == "Yes"):
+    
+    print("please enter user name:")
+    username=input()
+    print(username)
+    print("you chosed to creat password")
+    print("yor password should contains only alphabets in lower case and it should contains only these '@','&','*' special characters")
+    print("it should contain lenth of 5")
+    print("please enter password:")
+    password=input()
+    print(password)
+    if((len(password)!=5) or (checkalpahbet(password) == "false")):
+      #if(checkalpahbet(password) == "false"):
+      print("1")
+      print("plese follow the rules to emter the password")
+      print("rules are it should contains lenth of 5 and shoud use only lower case and contains only these '@','&','*' special characters")
+      password=input()
+      if(len(password)!=5 or (checkalpahbet(password))):
+        print("2")
+        print("as this is your second attempt of creting password you will have one more chance to create password other wise we will create a default password for you")
+        print("plese follow the rules to emter the password")
+        print("rules are it should contains lenth of 5 and shoud use only lower case and contains only these '@','&','*' special characters")
+        password=input()
+        if(len(password)!=5 or (checkalpahbet(password))):
+          print("3")
+          print("as this your third attempt in creating pass word we have cretae da default password for you")
+          print("please make note of your default password: abcd@")
+          password="abcd@"
+    
+    print(" you have sucess fully created account to login please use below user name password to login")
+    print("your user name and password are username=",username,"password=",password)
+  else:
+    print("thanks for visiting the site")
+        
+  
